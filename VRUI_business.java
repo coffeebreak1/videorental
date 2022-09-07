@@ -152,7 +152,7 @@ public class VRUI_business {
     public void registerCustomer() {
         System.out.println("Enter customer name: ") ;
         String name = scanner.next();
-        Customer customer = new Customer(name);
+        customers.add(new Customer(name)) ;
     }
 
     public void registerVideo() {
