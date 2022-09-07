@@ -35,4 +35,24 @@ public class Rental {
 	public int getDaysRentedLimit() {
 		return (getDaysRented() <= 2) ? 0 : video.getLimit();
 	}
+
+	record Report(double totalCharge, int totalPoint, String result) {}
+	public Report getReport() {
+		int daysRented = getDaysRented();
+		int eachPoint = getPoint(daysRented);
+		double eachCharge = Video.getCharge(this, daysRented);
+		return new Report(eachCharge, eachPoint,
+						"\t" + getVideo().getTitle() + "\tDays rented: "
+						+ daysRented + "\tCharge: " + eachCharge + "\tPoint: " + eachPoint + "\n");
+	}
+
+	private int getPoint(int daysRented) {
+		int eachPoint = 1;
+
+		if ((getVideo().getPriceCode() == Video.NEW_RELEASE) )
+			eachPoint++;
+		if ( daysRented > getDaysRentedLimit() )
+			eachPoint -= Math.min(eachPoint, getVideo().getLateReturnPointPenalty()) ;
+		return eachPoint;
+	}
 }
