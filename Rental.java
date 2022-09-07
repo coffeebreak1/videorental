@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public class Rental {
-	public static final int MILISECONDS_IN_A_DAY = 1000 * 60 * 60 * 24;
+	public static final int MILLISECOND_IN_A_DAY = 1000 * 60 * 60 * 24;
 	private final Video video ;
 	private boolean isRented; // 0 for Rented, 1 for Returned
 	private final Date rentDate ;
@@ -42,7 +42,7 @@ public class Rental {
 		} else {
 			diff = new Date().getTime() - rentDate.getTime();
 		}
-		daysRented = (int) (diff / MILISECONDS_IN_A_DAY) + 1;
+		daysRented = (int) (diff / MILLISECOND_IN_A_DAY) + 1;
 
 		if ( daysRented <= 2) return 0 ;
 
