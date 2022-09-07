@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Customer {
@@ -36,7 +35,7 @@ public class Customer {
 		int totalPoint = 0;
 		for (Rental each : rentals) {
 			int daysRented = each.getDaysRented();
-			double eachCharge = getCharge(each, daysRented);
+			double eachCharge = Video.getCharge(each, daysRented);
 			int eachPoint = getPoint(each, daysRented);
 			totalCharge += eachCharge;
 			totalPoint += eachPoint ;
@@ -65,20 +64,5 @@ public class Customer {
 		if ( daysRented > rental.getDaysRentedLimit() )
 			eachPoint -= Math.min(eachPoint, rental.getVideo().getLateReturnPointPenalty()) ;
 		return eachPoint;
-	}
-
-	private static double getCharge(Rental rental, int daysRented) {
-		double eachCharge = 0;
-		switch (rental.getVideo().getPriceCode()) {
-		case Video.REGULAR:
-			eachCharge += 2;
-			if (daysRented > 2)
-				eachCharge += (daysRented - 2) * 1.5;
-			break;
-		case Video.NEW_RELEASE:
-			eachCharge = daysRented * 3;
-			break;
-		}
-		return eachCharge;
 	}
 }

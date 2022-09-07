@@ -30,6 +30,20 @@ public class Video {
 		this.registeredDate = registeredDate ;
 	}
 
+	static double getCharge(Rental rental, int daysRented) {
+		double eachCharge = 0;
+		switch (rental.getVideo().getPriceCode()) {
+		case REGULAR:
+			eachCharge += 2;
+			if (daysRented > 2)
+				eachCharge += (daysRented - 2) * 1.5;
+			break;
+		case NEW_RELEASE:
+			eachCharge = daysRented * 3;
+			break;
+		}
+		return eachCharge;
+	}
 
 	public int getLateReturnPointPenalty() {
 		return videoType.getLateReturnPointPenalty();
