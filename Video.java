@@ -8,9 +8,6 @@ public class Video {
 	public static final int NEW_RELEASE =2 ;
 
 	private VideoType videoType ;
-//	public static final int VHS = 1 ;
-//	public static final int CD = 2 ;
-//	public static final int DVD = 3 ;
 
 	public static VideoType VHS = new VHS();
 	public static VideoType CD = new CD();
@@ -25,6 +22,14 @@ public class Video {
 		this.setPriceCode(priceCode) ;
 		this.registeredDate = registeredDate ;
 	}
+
+	public Video(String title, int videoType, int priceCode, Date registeredDate) {
+		this.setTitle(title) ;
+		this.setVideoType(videoType) ;
+		this.setPriceCode(priceCode) ;
+		this.registeredDate = registeredDate ;
+	}
+
 
 	public int getLateReturnPointPenalty() {
 		return videoType.getLateReturnPointPenalty();
@@ -67,6 +72,14 @@ public class Video {
 
 	public void setVideoType(VideoType videoType) {
 		this.videoType = videoType;
+	}
+
+	public void setVideoType(int videoType) {
+		switch (videoType){
+			case 1: this.videoType = VHS; break;
+			case 2: this.videoType = CD; break;
+			case 3: this.videoType = DVD; break;
+		}
 	}
 
 	public int getLimit(){return videoType.getLimit();}
