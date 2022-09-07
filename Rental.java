@@ -2,13 +2,13 @@ import java.util.Date;
 
 public class Rental {
 	private Video video ;
-	private int status ; // 0 for Rented, 1 for Returned
+	private boolean isRented; // 0 for Rented, 1 for Returned
 	private Date rentDate ;
 	private Date returnDate ;
 
 	public Rental(Video video) {
 		this.video = video ;
-		status = 0 ;
+		isRented = false ;
 		rentDate = new Date() ;
 	}
 
@@ -20,13 +20,13 @@ public class Rental {
 		this.video = video;
 	}
 
-	public int getStatus() {
-		return status;
+	public boolean getIsRented() {
+		return isRented;
 	}
 
 	public void returnVideo() {
-		if ( status == 1 ) {
-			this.status = 1;
+		if ( isRented == true ) {
+			this.isRented = true;
 			returnDate = new Date() ;
 		}
 	}
@@ -49,10 +49,10 @@ public class Rental {
 	public int getDaysRentedLimit() {
 		int limit = 0 ;
 		int daysRented ;
-		if (getStatus() == 1) { // returned Video
+		if (getIsRented() == true) {
 			long diff = returnDate.getTime() - rentDate.getTime();
 			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
-		} else { // not yet returned
+		} else {
 			long diff = new Date().getTime() - rentDate.getTime();
 			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
 		}
