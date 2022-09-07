@@ -11,14 +11,13 @@ public class VRUI_business {
 
     private final List<Video> videos = new ArrayList<>() ;
 
-    private Customer getCustomer(String customerName, Customer foundCustomer) {
+    private Customer getCustomer(String customerName) {
         for ( Customer customer: customers ) {
             if ( customer.getName().equals(customerName)) {
-                foundCustomer = customer ;
-                break ;
+                return customer;
             }
         }
-        return foundCustomer;
+        return null;
     }
 
     public void init() {
@@ -41,9 +40,7 @@ public class VRUI_business {
     public void clearRentals() {
         System.out.println("Enter customer name: ") ;
         String customerName = scanner.next() ;
-
-        Customer foundCustomer = null ;
-        foundCustomer = getCustomer(customerName, foundCustomer);
+        Customer foundCustomer = getCustomer(customerName);
 
         if ( foundCustomer == null ) {
             System.out.println("No customer found") ;
@@ -64,8 +61,7 @@ public class VRUI_business {
         System.out.println("Enter customer name: ") ;
         String customerName = scanner.next() ;
 
-        Customer foundCustomer = null ;
-        foundCustomer = getCustomer(customerName, foundCustomer);
+        Customer foundCustomer = getCustomer(customerName);
         if ( foundCustomer == null ) return ;
 
         System.out.println("Enter video title to return: ") ;
@@ -108,14 +104,11 @@ public class VRUI_business {
         System.out.println("Enter customer name: ") ;
         String customerName = scanner.next() ;
 
-        Customer foundCustomer = null ;
-        foundCustomer = getCustomer(customerName, foundCustomer);
-
-        if ( foundCustomer == null ) {
+        Customer foundCustomer = getCustomer(customerName);
+        if (foundCustomer == null) {
             System.out.println("No customer found") ;
         } else {
-            String result = foundCustomer.getReport() ;
-            System.out.println(result);
+            System.out.println(foundCustomer.getReport());
         }
     }
 
@@ -123,9 +116,7 @@ public class VRUI_business {
         System.out.println("Enter customer name: ") ;
         String customerName = scanner.next() ;
 
-        Customer foundCustomer = null ;
-        foundCustomer = getCustomer(customerName, foundCustomer);
-
+        Customer foundCustomer = getCustomer(customerName);
         if ( foundCustomer == null ) return ;
 
         System.out.println("Enter video title to rent: ") ;
