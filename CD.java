@@ -1,5 +1,3 @@
-import java.util.Date;
-
 public class CD implements VideoType{
 
     public int getLateReturnPointPenalty() {

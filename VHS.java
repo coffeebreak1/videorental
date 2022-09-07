@@ -1,5 +1,3 @@
-import java.util.Date;
-
 public class VHS implements VideoType{
     public int getLateReturnPointPenalty() {
         return 1;

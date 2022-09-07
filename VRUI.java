@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 public class VRUI {
@@ -41,10 +38,6 @@ public class VRUI {
 		System.out.println("\t 6. Return video");
 		System.out.println("\t 7. Show customer report");
 		System.out.println("\t 8. Show customer and clear rentals");
-
-		int command = scanner.nextInt() ;
-
-		return command ;
-
+		return scanner.nextInt() ;
 	}
 }

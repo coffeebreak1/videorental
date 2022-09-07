@@ -23,7 +23,6 @@ public class Rental {
 
 	public void returnVideo() {
 		if (isRented) {
-			this.isRented = true;
 			returnDate = new Date() ;
 		}
 	}
