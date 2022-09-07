@@ -26,26 +26,13 @@ public class Rental {
 			returnDate = new Date() ;
 		}
 	}
-	public Date getRentDate() {
-		return rentDate;
-	}
 
-	public Date getReturnDate() {
-		return returnDate;
+	public int getDaysRented() {
+		long timeRented = (getIsRented() ? returnDate.getTime() : new Date().getTime()) - rentDate.getTime();
+		return (int) (timeRented / MILLISECOND_IN_A_DAY) + 1;
 	}
 
 	public int getDaysRentedLimit() {
-		int daysRented ;
-		long diff;
-		if (getIsRented()) {
-			diff = returnDate.getTime() - rentDate.getTime();
-		} else {
-			diff = new Date().getTime() - rentDate.getTime();
-		}
-		daysRented = (int) (diff / MILLISECOND_IN_A_DAY) + 1;
-
-		if ( daysRented <= 2) return 0 ;
-
-		return video.getLimit() ;
+		return (getDaysRented() <= 2) ? 0 : video.getLimit();
 	}
 }

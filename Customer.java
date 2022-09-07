@@ -35,7 +35,7 @@ public class Customer {
 		double totalCharge = 0;
 		int totalPoint = 0;
 		for (Rental each : rentals) {
-			int daysRented = getDaysRent(getDiff(each));
+			int daysRented = each.getDaysRented();
 			double eachCharge = getCharge(each, daysRented);
 			int eachPoint = getPoint(each, daysRented);
 			totalCharge += eachCharge;
@@ -54,14 +54,6 @@ public class Customer {
 		}
 		if ( totalPoint >= 30 ) {
 			System.out.println("Congrats! You earned two free coupon");
-		}
-	}
-
-	private static long getDiff(Rental each) {
-		if (each.getIsRented()) { // returned Video
-			return each.getReturnDate().getTime() - each.getRentDate().getTime();
-		} else { // not yet returned
-			return new Date().getTime() - each.getRentDate().getTime();
 		}
 	}
 
@@ -88,9 +80,5 @@ public class Customer {
 			break;
 		}
 		return eachCharge;
-	}
-
-	private static int getDaysRent(long diff) {
-		return (int) (diff / (1000 * 60 * 60 * 24)) + 1;
 	}
 }
