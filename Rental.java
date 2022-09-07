@@ -2,9 +2,9 @@ import java.util.Date;
 
 public class Rental {
 	public static final int MILISECONDS_IN_A_DAY = 1000 * 60 * 60 * 24;
-	private Video video ;
+	private final Video video ;
 	private boolean isRented; // 0 for Rented, 1 for Returned
-	private Date rentDate ;
+	private final Date rentDate ;
 	private Date returnDate ;
 
 	public Rental(Video video) {
@@ -22,7 +22,7 @@ public class Rental {
 	}
 
 	public void returnVideo() {
-		if ( isRented == true ) {
+		if (isRented) {
 			this.isRented = true;
 			returnDate = new Date() ;
 		}
@@ -38,7 +38,7 @@ public class Rental {
 	public int getDaysRentedLimit() {
 		int daysRented ;
 		long diff;
-		if (getIsRented() == true) {
+		if (getIsRented()) {
 			diff = returnDate.getTime() - rentDate.getTime();
 		} else {
 			diff = new Date().getTime() - rentDate.getTime();

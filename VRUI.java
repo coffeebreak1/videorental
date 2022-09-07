@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class VRUI {
 
-	private static VRUI_business logic = new VRUI_business() ;
-	private static Scanner scanner = new Scanner(System.in) ;
+	private static final VRUI_business logic = new VRUI_business() ;
+	private static final Scanner scanner = new Scanner(System.in) ;
 	public static void main(String[] args) {
 		VRUI ui = new VRUI() ;
 

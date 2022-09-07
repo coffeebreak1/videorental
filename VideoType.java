@@ -1,8 +1,8 @@
 public interface VideoType {
 
-    public int getLateReturnPointPenalty();
+    int getLateReturnPointPenalty();
 
-    public int getLimit();
+    int getLimit();
 
 
 

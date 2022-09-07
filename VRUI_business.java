@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 
 public class VRUI_business {
-    private static Scanner scanner = new Scanner(System.in) ;
+    private static final Scanner scanner = new Scanner(System.in) ;
 
-    private List<Customer> customers = new ArrayList<Customer>() ;
+    private final List<Customer> customers = new ArrayList<>() ;
 
-    private List<Video> videos = new ArrayList<Video>() ;
+    private final List<Video> videos = new ArrayList<>() ;
 
     private Customer getCustomer(String customerName, Customer foundCustomer) {
         for ( Customer customer: customers ) {
@@ -55,7 +55,7 @@ public class VRUI_business {
                 System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
             }
 
-            List<Rental> rentals = new ArrayList<Rental>() ;
+            List<Rental> rentals = new ArrayList<>() ;
             foundCustomer.setRentals(rentals);
         }
     }
@@ -133,7 +133,7 @@ public class VRUI_business {
 
         Video foundVideo = null ;
         for ( Video video: videos ) {
-            if ( video.getTitle().equals(videoTitle) && video.isRented() == false ) {
+            if ( video.getTitle().equals(videoTitle) && !video.isRented()) {
                 foundVideo = video ;
                 break ;
             }

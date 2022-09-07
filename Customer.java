@@ -3,9 +3,9 @@ import java.util.Date;
 import java.util.List;
 
 public class Customer {
-	private String name;
+	private final String name;
 
-	private List<Rental> rentals = new ArrayList<Rental>();
+	private List<Rental> rentals = new ArrayList<>();
 
 	public Customer(String name) {
 		this.name = name;
@@ -50,10 +50,10 @@ public class Customer {
 
 	private static void printEarnedCoupon(int totalPoint) {
 		if ( totalPoint >= 10 ) {
-			System.out.println("Congrat! You earned one free coupon");
+			System.out.println("Congrats! You earned one free coupon");
 		}
 		if ( totalPoint >= 30 ) {
-			System.out.println("Congrat! You earned two free coupon");
+			System.out.println("Congrats! You earned two free coupon");
 		}
 	}
 
