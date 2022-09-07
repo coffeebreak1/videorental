@@ -49,13 +49,14 @@ public class Rental {
 	public int getDaysRentedLimit() {
 		int limit = 0 ;
 		int daysRented ;
+		long diff;
 		if (getIsRented() == true) {
-			long diff = returnDate.getTime() - rentDate.getTime();
-			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
+			diff = returnDate.getTime() - rentDate.getTime();
 		} else {
-			long diff = new Date().getTime() - rentDate.getTime();
-			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
+			diff = new Date().getTime() - rentDate.getTime();
 		}
+		daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
+
 		if ( daysRented <= 2) return limit ;
 
 		switch ( video.getVideoType() ) {
