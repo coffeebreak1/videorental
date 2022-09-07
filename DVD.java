@@ -1,12 +1,13 @@
 import java.util.Date;
 
-public class DVD extends Video{
-    public DVD(String title, int videoType, int priceCode, Date registeredDate){
-        super(title, videoType, priceCode, registeredDate);
-    }
+public class DVD implements VideoType{
 
     public int getLateReturnPointPenalty() {
         return 3;
     }
 
+    public int getLimit()
+    {
+        return 2;
+    }
 }

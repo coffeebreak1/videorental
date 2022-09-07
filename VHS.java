@@ -1,10 +1,11 @@
 import java.util.Date;
 
-public class VHS extends Video{
-    public VHS(String title, int videoType, int priceCode, Date registeredDate){
-        super(title, videoType, priceCode, registeredDate);
-    }
+public class VHS implements VideoType{
     public int getLateReturnPointPenalty() {
         return 1;
+    }
+    public int getLimit()
+    {
+        return 5;
     }
 }
