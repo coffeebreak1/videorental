@@ -10,6 +10,9 @@ public class VRUI {
 
 	private List<Video> videos = new ArrayList<Video>() ;
 
+
+	private VRUI_business logic = new VRUI_business() ;
+
 	public static void main(String[] args) {
 		VRUI ui = new VRUI() ;
 
@@ -33,17 +36,22 @@ public class VRUI {
 		System.out.println("Bye");
 	}
 
-	public void clearRentals() {
-		System.out.println("Enter customer name: ") ;
-		String customerName = scanner.next() ;
-
-		Customer foundCustomer = null ;
+	private Customer getCustomer(String customerName, Customer foundCustomer) {
 		for ( Customer customer: customers ) {
 			if ( customer.getName().equals(customerName)) {
 				foundCustomer = customer ;
 				break ;
 			}
 		}
+		return foundCustomer;
+	}
+
+	public void clearRentals() {
+		System.out.println("Enter customer name: ") ;
+		String customerName = scanner.next() ;
+
+		Customer foundCustomer = null ;
+		foundCustomer = getCustomer(customerName, foundCustomer);
 
 		if ( foundCustomer == null ) {
 			System.out.println("No customer found") ;
@@ -65,12 +73,7 @@ public class VRUI {
 		String customerName = scanner.next() ;
 
 		Customer foundCustomer = null ;
-		for ( Customer customer: customers ) {
-			if ( customer.getName().equals(customerName)) {
-				foundCustomer = customer ;
-				break ;
-			}
-		}
+		foundCustomer = getCustomer(customerName, foundCustomer);
 		if ( foundCustomer == null ) return ;
 
 		System.out.println("Enter video title to return: ") ;
@@ -131,12 +134,7 @@ public class VRUI {
 		String customerName = scanner.next() ;
 
 		Customer foundCustomer = null ;
-		for ( Customer customer: customers ) {
-			if ( customer.getName().equals(customerName)) {
-				foundCustomer = customer ;
-				break ;
-			}
-		}
+		foundCustomer = getCustomer(customerName, foundCustomer);
 
 		if ( foundCustomer == null ) {
 			System.out.println("No customer found") ;
@@ -151,12 +149,7 @@ public class VRUI {
 		String customerName = scanner.next() ;
 
 		Customer foundCustomer = null ;
-		for ( Customer customer: customers ) {
-			if ( customer.getName().equals(customerName)) {
-				foundCustomer = customer ;
-				break ;
-			}
-		}
+		foundCustomer = getCustomer(customerName, foundCustomer);
 
 		if ( foundCustomer == null ) return ;
 
