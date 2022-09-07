@@ -1,11 +1,13 @@
 import java.util.Date;
 
-public class CD extends Video{
-    public CD(String title, int videoType, int priceCode, Date registeredDate){
-        super(title, videoType, priceCode, registeredDate);
-    }
+public class CD implements VideoType{
+
     public int getLateReturnPointPenalty() {
         return 2;
+    }
+    public int getLimit()
+    {
+        return 3;
     }
 
 }
